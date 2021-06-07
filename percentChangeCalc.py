@@ -1,25 +1,50 @@
 #Percent Change Calculator
-print('Welcome to the percent change calc')
-original= float(input('First Value: '))
-change= float(input('Second Value: '))
+print('''
 
-#------------#
+Percent Change Calculator
+Basis of formula:
 
-#percent calc
-def percentChange(original,change):
-	percent = ((change-original)/original)
-	formatPercent= str(abs(percent) *100)
-	print(f'{formatPercent}%')
+((V2-V1)/|V1|) * 100
 
+V2 = new value
+V1 = original value
 
-#------------#
-if original == change:
-	print('No % change')
-elif original < change:
-	print('Percent INCREASE')
-	percentChange(original,change)
-elif original > change:
-	print('Percent DECREASE')
-	percentChange(original,change)
-else:
-	print('Error')
+'''
+)
+def main():
+	
+	print('Welcome to the percent change calc')
+	original= float(input('First Value: '))
+	change= float(input('Second Value: '))
+	
+	#------------#
+	
+	#percent calc
+	def percentChange(original,change):
+		percent = ((change-original)/abs(original)*100)
+		percent = abs(percent)
+		percent = round(percent,3)
+		print(f'{percent}%')
+	
+	
+	#------------#
+	if original == change:
+		print('No % change')
+	elif original < change:
+		print('Percent INCREASE of:')
+		percentChange(original,change)
+	elif original > change:
+		print('Percent DECREASE of:')
+		percentChange(original,change)
+	else:
+		print('Error')
+
+	x = input('Try again? Type Yes or No:\n\n').lower()
+	if x == 'yes':
+	   main()
+	else:
+	 print('Error')
+  
+
+main()
+	
